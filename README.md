@@ -58,15 +58,15 @@ http://<your-domain.com>/docs
 ### 1️⃣ Clone the Repo
 
 ```bash
-git clone https://github.com/<your-username>/todo-aws-devops.git
+git clone https://github.com/MukulB0412/todo-aws-devops.git
 cd todo-aws-devops
 ```
 
 ### 2️⃣ Create Docker Image Locally (Optional)
 
 ```bash
-docker build -t <dockerhub-username>/todo-aws-devops:latest .
-docker push <dockerhub-username>/todo-aws-devops:latest
+docker build -t mukul0412/todo-aws-devops:latest .
+docker push mukul0412/todo-aws-devops:latest
 ```
 
 ### 3️⃣ GitHub Actions Setup
