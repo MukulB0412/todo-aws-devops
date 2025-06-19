@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: todo
-          image: mukul0412/todo-aws-devops:v2
+          image: mukul0412/todo-aws-devops:v1
           ports:
             - containerPort: 8000
           envFrom:

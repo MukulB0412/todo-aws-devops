@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from app.database import todo_collection
+from app.database import db, init_db
 
 app = FastAPI()
 
@@ -8,20 +8,23 @@ class Todo(BaseModel):
     title: str
     done: bool = False
 
+@app.on_event("startup")
+def startup():
+    init_db()
+
 @app.post("/todo")
 def add_todo(todo: Todo):
-    todo_collection.insert_one(todo.dict())
-    return {"msg": "Added"}
+    db.append(todo)
+    return {"msg": "Added", "todo": todo}
 
 @app.get("/todos")
 def get_all():
-    todos = list(todo_collection.find({}, {"_id": 0}))
-    return todos
+    return db
 
-@app.delete("/todo/{title}")
-def delete_todo(title: str):
-    result = todo_collection.delete_one({"title": title})
-    if result.deleted_count == 0:
-        raise HTTPException(status_code=404, detail="Not found")
-    return {"msg": "Deleted"}
-
+@app.delete("/todo/{index}")
+def delete_todo(index: int):
+    try:
+        db.pop(index)
+        return {"msg": "Deleted"}
+    except IndexError:
+        raise HTTPException(status_code=404, detail="Item not found")
