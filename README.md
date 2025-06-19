@@ -30,9 +30,9 @@ This project is a complete DevOps workflow demonstrating how to:
 ├── .github/workflows/
 │   └── docker-publish.yml   # GitHub Actions pipeline
 └── k8s/
-    ├── configmap.yaml       # ConfigMap (if needed)
+    ├── configmap.yaml       # ConfigMap 
     ├── deployment.yaml      # K8s Deployment
-    ├── service.yml          # K8s Service (LoadBalancer)
+    ├── service.yml          # K8s Service 
 ```
 
 ---
@@ -80,7 +80,7 @@ On push to `main`, Docker image is built & pushed to Docker Hub using:
 Apply your manifests:
 
 ```bash
-kubectl apply -f k8s/configmap.yaml   # Optional
+kubectl apply -f k8s/configmap.yaml  
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yml
 ```
