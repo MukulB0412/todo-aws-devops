@@ -12,6 +12,11 @@ class Todo(BaseModel):
 def startup():
     init_db()
 
+@app.get("/")
+def home():
+    return {"msg": "FastAPI deployed on AWS EKS with public URL!"}
+
+
 @app.post("/todo")
 def add_todo(todo: Todo):
     db.append(todo)
