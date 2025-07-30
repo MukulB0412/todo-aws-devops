@@ -2,4 +2,4 @@ db = []
 
 def init_db():
     global db
-    db = []
+    db = [1,2,3,4,5]
